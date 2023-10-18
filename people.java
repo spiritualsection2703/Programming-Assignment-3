@@ -3,7 +3,7 @@ package main;
 import java.util.Scanner;
 
 public class people {
-    // Declare instance variables
+    // Here I am declaring the variables
     private String position;
     private String name;
     private String studentID;
@@ -14,18 +14,18 @@ public class people {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.print("Enter position (student, teacher, or TA): ");
+            System.out.print("Which Position would you like to choose student, teacher, or TA?: ");
             position = scanner.nextLine().trim();
 
             if (!position.equals("student") && !position.equals("teacher") && !position.equals("TA")) {
-                System.out.println("Invalid position. Please enter 'student', 'teacher', or 'TA'.");
+                System.out.println("Please enter 'student', 'teacher', or 'TA'.");
                 continue;
             }
 
             System.out.print("Enter name (First Last): ");
             name = scanner.nextLine().trim();
             if (!name.matches("^[A-Za-z]+ [A-Za-z]+$")) {
-                System.out.println("Invalid name format. Please enter two words separated by a single space.");
+                System.out.println("Please enter two words separated by a single space.");
                 continue;
             }
 
@@ -33,7 +33,7 @@ public class people {
                 System.out.print("Enter Student ID (5 digits or 0): ");
                 studentID = scanner.nextLine().trim();
                 if (!studentID.matches("^\\d{5}$") && !studentID.equals("0")) {
-                    System.out.println("Invalid Student ID format. Please enter 5 digits or '0'.");
+                    System.out.println("Please enter 5 digits or '0'.");
                     continue;
                 }
                 teacherID = "0";
@@ -41,7 +41,7 @@ public class people {
                 System.out.print("Enter Teacher ID (5 digits or 0): ");
                 teacherID = scanner.nextLine().trim();
                 if (!teacherID.matches("^\\d{5}$") && !teacherID.equals("0")) {
-                    System.out.println("Invalid Teacher ID format. Please enter 5 digits or '0'.");
+                    System.out.println("Please enter 5 digits or '0'.");
                     continue;
                 }
                 studentID = "0";
@@ -49,13 +49,13 @@ public class people {
                 System.out.print("Enter Student ID (5 digits): ");
                 studentID = scanner.nextLine().trim();
                 if (!studentID.matches("^\\d{5}$")) {
-                    System.out.println("Invalid Student ID format. Please enter 5 digits.");
+                    System.out.println("Please enter 5 digits.");
                     continue;
                 }
                 System.out.print("Enter Teacher ID (5 digits): ");
                 teacherID = scanner.nextLine().trim();
                 if (!teacherID.matches("^\\d{5}$")) {
-                    System.out.println("Invalid Teacher ID format. Please enter 5 digits.");
+                    System.out.println("Please enter 5 digits.");
                     continue;
                 }
             }
@@ -63,14 +63,14 @@ public class people {
             System.out.print("Enter phone (10 digits): ");
             phone = scanner.nextLine().trim();
             if (!phone.matches("^\\d{10}$")) {
-                System.out.println("Invalid phone format. Please enter 10 digits.");
+                System.out.println("Please use a phone format of 10 digits.");
                 continue;
             }
             break;
         }
     }
 
-    // Add getters to access the information
+    // These are getters to get the information
     public String getPosition() {
         return position;
     }
