@@ -2,20 +2,19 @@ package main;
 
 import java.io.PrintWriter;
 
-
 public interface CSVPrintable {
     String getName();
     int getID();
     void csvPrintln(PrintWriter out);
-    
-    // Define the Student class implementing the CSVPrintable interface
+}
+
+// Here I am implementing the Student class to the CSVPrintable interface
 class Student implements CSVPrintable {
     private String name;
     private long phone;
     private int studentID;
     private int teacherID;
 
-    // Constructor for Student class
     public Student(String name, long phone, int studentID, int teacherID) {
         this.name = name;
         this.phone = phone;
@@ -35,19 +34,18 @@ class Student implements CSVPrintable {
 
     @Override
     public void csvPrintln(PrintWriter out) {
-        out.println(getName() + "," + getID() + "," + phone);
+        out.println("Student," + getName() + "," + getID() + "," + phone);
     }
 }
 
-// Define the Teacher class implementing the CSVPrintable interface
+//Here I am implementing the Teacher class to the CSVPrintable interface
 class Teacher implements CSVPrintable {
     private String name;
-    private int phone; // 4-digit postfix of the phone number
+    private long phone;
     private int studentID;
     private int teacherID;
 
-    // Constructor for Teacher class
-    public Teacher(String name, int phone, int studentID, int teacherID) {
+    public Teacher(String name, long phone, int studentID, int teacherID) {
         this.name = name;
         this.phone = phone;
         this.studentID = studentID;
@@ -66,20 +64,36 @@ class Teacher implements CSVPrintable {
 
     @Override
     public void csvPrintln(PrintWriter out) {
-        out.println(getName() + "," + getID() + "," + phone);
+        out.println("Teacher," + getName() + "," + getID() + "," + phone);
     }
 }
 
-// Define the TA class extending Student and overriding getID
-class TA extends Student {
+// DHere I am implementing the TA class to the CSVPrintable interface
+class TA implements CSVPrintable {
+    private String name;
+    private long phone;
+    private int studentID;
+    private int teacherID;
+
     public TA(String name, long phone, int studentID, int teacherID) {
-        super(name, phone, studentID, teacherID);
+        this.name = name;
+        this.phone = phone;
+        this.studentID = studentID;
+        this.teacherID = teacherID;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override
     public int getID() {
-        // Return the maximum of StudentID and TeacherID
-        return Math.max(super.studentID, super.teacherID);
+        return Math.max(studentID, teacherID);
     }
-}
+
+    @Override
+    public void csvPrintln(PrintWriter out) {
+        out.println("TA," + getName() + "," + getID() + "," + phone);
+    }
 }
