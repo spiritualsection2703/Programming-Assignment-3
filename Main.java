@@ -5,35 +5,43 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        people person = new people();  // I created an instance for the 'people' class
-        person.collectInformation();   //  Here I called 'collectInformation' method to the instance
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Information collected:");
-        System.out.println(person.getPosition() + " " + person.getName() + "," + person.getStudentID() + " " + person.getTeacherID() + " " + person.getPhone());
-
-        // Create a PrintWriter to write to the CSV file
         try (PrintWriter writer = new PrintWriter("out.csv")) {
-            String position = person.getPosition();
-            String name = person.getName();
-            long phone = Long.parseLong(person.getPhone());
-            int studentID = Integer.parseInt(person.getStudentID());
-            int teacherID = Integer.parseInt(person.getTeacherID());
+            while (true) {
+                people person = new people(); 
+                person.collectInformation();   
 
-            // Create an appropriate object based on 'position'
-            if (position.equals("student")) {
-                Student student = new Student(name, phone, studentID, 0);
-                student.csvPrintln(writer);
-            } else if (position.equals("teacher")) {
-                Teacher teacher = new Teacher(name, phone, 0, teacherID);
-                teacher.csvPrintln(writer);
-            } else if (position.equals("TA")) {
-                TA ta = new TA(name, phone, studentID, teacherID);
-                ta.csvPrintln(writer);
-            } else {
-                System.out.println("Invalid position.");
+                System.out.println("Information collected:");
+                System.out.println(person.getPosition() + " " + person.getName() + " " + person.getStudentID() + " " + person.getTeacherID() + " " + person.getPhone());
+
+                String position = person.getPosition();
+                String name = person.getName();
+                long phone = Long.parseLong(person.getPhone());
+                int studentID = Integer.parseInt(person.getStudentID());
+                int teacherID = Integer.parseInt(person.getTeacherID());
+
+                if (position.equals("Student")) {
+                    Student student = new Student(name, phone, studentID, 0);
+                    student.csvPrintln(writer);
+                } else if (position.equals("Teacher")) {
+                    Teacher teacher = new Teacher(name, phone, 0, teacherID);
+                    teacher.csvPrintln(writer);
+                } else if (position.equals("TA")) {
+                    TA ta = new TA(name, phone, studentID, teacherID);
+                    ta.csvPrintln(writer);
+                } else {
+                    System.out.println("Invalid position.");
+                }
+
+                System.out.println("Information saved to out.csv.");
+
+                System.out.print("Do you want to add more information (yes/no)? ");
+                String response = scanner.nextLine().trim().toLowerCase();
+                if (!response.equals("yes")) {
+                    break;
+                }
             }
-
-            System.out.println("Information saved to out.csv.");
         } catch (Exception e) {
             e.printStackTrace();
         }

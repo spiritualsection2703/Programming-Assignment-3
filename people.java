@@ -15,11 +15,11 @@ public class people {
         
         //This is a while loop is asking for all of the information
         while (true) {
-            System.out.print("Which Position would you like to choose student, teacher, or TA?: ");
+            System.out.print("Hello, which position would you like to choose Student, Teacher, or TA?: ");
             position = scanner.nextLine().trim();
 
             if (!position.equals("Student") && !position.equals("Teacher") && !position.equals("TA")) {
-                System.out.println("Please enter 'student', 'teacher', or 'TA'.");
+                System.out.println("Please enter 'Student', 'Teacher', or 'TA'.");
                 continue;
             }
 
