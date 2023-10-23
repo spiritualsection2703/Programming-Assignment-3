@@ -9,11 +9,7 @@ public class Main {
         person.collectInformation();   //  Here I called 'collectInformation' method to the instance
 
         System.out.println("Information collected:");
-        System.out.println("Position: " + person.getPosition());
-        System.out.println("Name: " + person.getName());
-        System.out.println("Student ID: " + person.getStudentID());
-        System.out.println("Teacher ID: " + person.getTeacherID());
-        System.out.println("Phone: " + person.getPhone());
+        System.out.println(person.getPosition() + " " + person.getName() + "," + person.getStudentID() + " " + person.getTeacherID() + " " + person.getPhone());
 
         // Create a PrintWriter to write to the CSV file
         try (PrintWriter writer = new PrintWriter("out.csv")) {

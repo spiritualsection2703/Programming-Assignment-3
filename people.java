@@ -18,7 +18,7 @@ public class people {
             System.out.print("Which Position would you like to choose student, teacher, or TA?: ");
             position = scanner.nextLine().trim();
 
-            if (!position.equals("student") && !position.equals("teacher") && !position.equals("TA")) {
+            if (!position.equals("Student") && !position.equals("Teacher") && !position.equals("TA")) {
                 System.out.println("Please enter 'student', 'teacher', or 'TA'.");
                 continue;
             }
@@ -30,7 +30,7 @@ public class people {
                 continue;
             }
 
-            if (position.equals("student")) {
+            if (position.equals("Student")) {
                 System.out.print("Student ID (5 digits or 0): ");
                 studentID = scanner.nextLine().trim();
                 if (!studentID.matches("^\\d{5}$") && !studentID.equals("0")) {
@@ -38,7 +38,7 @@ public class people {
                     continue;
                 }
                 teacherID = "0";
-            } else if (position.equals("teacher")) {
+            } else if (position.equals("Teacher")) {
                 System.out.print("Teacher ID (5 digits or 0): ");
                 teacherID = scanner.nextLine().trim();
                 if (!teacherID.matches("^\\d{5}$") && !teacherID.equals("0")) {
